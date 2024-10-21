@@ -1,0 +1,42 @@
+.simulator-container {
+    background-color: #f0f8ff;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    text-align: center;
+    color: #007bff;
+  }
+  
+  .controls {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+  }
+  
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  input[type="range"] {
+    width: 200px;
+  }
+  
+  .results {
+    margin-top: 20px;
+    font-family: 'Arial', sans-serif;
+    font-size: 18px;
+  }
+  
+  .canvas {
+    border: 2px solid #007bff;
+    margin-top: 20px;
+    background-color: #e6e6e6;
+  }
+  
