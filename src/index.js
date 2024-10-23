@@ -1,11 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import { createRoot } from 'react-dom/client'; // Importar createRoot
+import App from './App'; // Cambia esto según tu estructura de archivos
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const container = document.getElementById('root'); // Asegúrate de que este ID coincida con tu archivo HTML
+const root = createRoot(container); // Crear la raíz
+root.render(<App />); // Renderizar la aplicación

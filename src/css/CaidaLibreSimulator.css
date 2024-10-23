@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra horizontalmente */
+    justify-content: center; /* Centra verticalmente */
+    height: 100vh; /* Ocupa toda la altura de la ventana */
+    text-align: center; /* Alinea el texto al centro */
+  }
+  
+  button {
+    margin: 10px; /* Añade espacio entre los botones */
+    padding: 10px 20px; /* Añade relleno a los botones */
+    font-size: 16px; /* Ajusta el tamaño de la fuente */
+    cursor: pointer; /* Cambia el cursor al pasar sobre los botones */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Esquinas redondeadas */
+    background-color: #007bff; /* Color de fondo */
+    color: white; /* Color del texto */
+  }
+  
+  button:disabled {
+    background-color: #ccc; /* Color de fondo para el botón deshabilitado */
+    cursor: not-allowed; /* Cambia el cursor cuando está deshabilitado */
+  }
+  
+  h1, h2 {
+    margin: 10px 0; /* Espaciado entre títulos */
+  }
+  
+  canvas {
+    margin: 20px 0; /* Espaciado alrededor del canvas */
+  }
+  

@@ -99,7 +99,7 @@ function Canvas({ angle, velocity, isAnimating, setSimulationData }) {
   }, [angle, velocity, isAnimating, setSimulationData]);
 
   return (
-    <canvas ref={canvasRef} width={800} height={400} />
+    <canvas ref={canvasRef} width={1500} height={500} />
   );
 }
 
