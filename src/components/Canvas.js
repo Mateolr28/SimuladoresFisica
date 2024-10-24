@@ -8,6 +8,15 @@ function Canvas({ angle, velocity, isAnimating, setSimulationData }) {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
 
+    // Ajustar el tamaño del canvas según el contenedor
+    const resizeCanvas = () => {
+      canvas.width = canvas.parentElement.offsetWidth; // Tomar el ancho del contenedor
+      canvas.height = canvas.parentElement.offsetHeight * 0.5; // Proporción 50% de la altura del contenedor
+    };
+    
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas(); // Ajustar al inicio
+
     const drawBackground = () => {
       // Dibujar el cielo
       ctx.fillStyle = '#87CEEB';  // Color de cielo
@@ -19,17 +28,15 @@ function Canvas({ angle, velocity, isAnimating, setSimulationData }) {
     };
 
     const drawCannon = (currentAngle) => {
-      // Dibujar el cañón
       ctx.save();
       ctx.translate(50, canvas.height - 50);
-      ctx.rotate((-currentAngle * Math.PI) / 180); // Rotar el cañón según el ángulo
+      ctx.rotate((-currentAngle * Math.PI) / 180);
       ctx.fillStyle = 'red';
       ctx.fillRect(0, -10, 40, 20);
       ctx.restore();
     };
 
     const drawProjectile = (x, y) => {
-      // Dibujar la pelota del proyectil
       ctx.beginPath();
       ctx.arc(x, y, 10, 0, 2 * Math.PI);
       ctx.fillStyle = 'red';
@@ -38,7 +45,6 @@ function Canvas({ angle, velocity, isAnimating, setSimulationData }) {
     };
 
     const drawPath = (points) => {
-      // Dibujar la línea parabólica conectando los puntos
       ctx.beginPath();
       ctx.strokeStyle = 'blue';
       ctx.lineWidth = 2;
@@ -52,38 +58,35 @@ function Canvas({ angle, velocity, isAnimating, setSimulationData }) {
     const animateProjectile = () => {
       let x = 0;
       let y = canvas.height - 50;
-      const g = 9.81; // Gravedad en m/s²
-      const radians = (angle * Math.PI) / 180; // Convertir grados a radianes
-      const vx = velocity * Math.cos(radians); // Componente x de la velocidad
-      const vy = velocity * Math.sin(radians); // Componente y de la velocidad
-
+      const g = 9.81;
+      const radians = (angle * Math.PI) / 180;
+      const vx = velocity * Math.cos(radians);
+      const vy = velocity * Math.sin(radians);
       let t = 0;
-      const dt = 0.05; // Intervalo de tiempo para la simulación
+      const dt = 0.05;
 
-      const points = []; // Lista para almacenar los puntos de la trayectoria
+      const points = [];
 
       const interval = setInterval(() => {
         t += dt;
-        x = 50 + vx * t * 10; // Multiplicar por 10 para escalar
-        y = canvas.height - 50 - (vy * t - 0.5 * g * t * t) * 10; // Escalar y revertir para la altura
+        x = 50 + vx * t * 10;
+        y = canvas.height - 50 - (vy * t - 0.5 * g * t * t) * 10;
 
-        points.push({ x, y }); // Almacenar el punto de la trayectoria
+        points.push({ x, y });
 
-        // Limpiar el canvas y redibujar todo
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         drawBackground();
         drawCannon(angle);
-        drawPath(points); // Dibujar la trayectoria
+        drawPath(points);
         drawProjectile(x, y);
 
-        // Detener la animación cuando el proyectil cae al suelo
         if (y >= canvas.height - 50) {
           clearInterval(interval);
-          setPathPoints(points); // Almacenar los puntos para la trayectoria final
+          setPathPoints(points);
           setSimulationData({
             totalTime: t.toFixed(2),
             horizontalDistance: (x / 10).toFixed(2),
-            maxHeight: ((vy * vy) / (2 * g)).toFixed(2), // Altura máxima alcanzada
+            maxHeight: ((vy * vy) / (2 * g)).toFixed(2),
           });
         }
       }, 20);
@@ -96,10 +99,11 @@ function Canvas({ angle, velocity, isAnimating, setSimulationData }) {
       animateProjectile();
     }
 
+    return () => window.removeEventListener('resize', resizeCanvas);
   }, [angle, velocity, isAnimating, setSimulationData]);
 
   return (
-    <canvas ref={canvasRef} width={1500} height={500} />
+    <canvas ref={canvasRef} style={{ width: '100%', height: 'auto' }} />
   );
 }
 
