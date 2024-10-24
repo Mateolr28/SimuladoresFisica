@@ -63,7 +63,7 @@ const CaidaLibreSimulator = () => {
   };
 
   return (
-    <div className="container"> {/* Contenedor principal centrado */}
+    <div className="container">
       <h1>Simulador de Caída Libre</h1>
       <ControlsFree height={height} setHeight={setHeight} />
       <FreeFallCanvas height={height} time={time} maxHeight={maxHeight} />
@@ -71,7 +71,7 @@ const CaidaLibreSimulator = () => {
         <p>Tiempo de caída: {time.toFixed(2)} s</p>
         <p>Velocidad final: {calculateFinalVelocity(time).toFixed(2)} m/s</p>
       </div>
-      <div>
+      <div className="button-container">
         <button onClick={startSimulation} disabled={isRunning || hasLanded}>Iniciar</button>
         <button onClick={resetSimulation}>Reiniciar</button>
       </div>

@@ -37,7 +37,12 @@ const FreeFallChart = ({ timeData, heightData, velocityData }) => {
       <div className="chart-wrapper">
         <div className="chart-container">
           <h2>Gráfico de Altura</h2>
-          <Line data={dataHeight} options={{ maintainAspectRatio: false }} />
+          <Line 
+              data={dataHeight} 
+              options={{ 
+              maintainAspectRatio: false, 
+              responsive: true,
+              }} />
         </div>
 
         <div className="chart-container">

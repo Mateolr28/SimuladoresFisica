@@ -6,7 +6,8 @@ const FreeFallCanvas = ({ height, time, maxHeight }) => {
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
-    const canvasHeight = canvas.height;
+    const canvasWidth = canvas.width = window.innerWidth < 768 ? window.innerWidth * 0.9 : 500;
+   const canvasHeight = canvas.height = window.innerWidth < 768 ? window.innerWidth * 0.9 : 500; 
     const g = 9.81;
 
     // Ecuación de la caída libre para calcular la altura
