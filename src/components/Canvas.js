@@ -23,7 +23,7 @@ function Canvas({ angle, velocity, isAnimating, setSimulationData }) {
       ctx.save();
       ctx.translate(50, canvas.height - 50);
       ctx.rotate((-currentAngle * Math.PI) / 180); // Rotar el cañón según el ángulo
-      ctx.fillStyle = 'red';
+      ctx.fillStyle = 'red';// color del cañon
       ctx.fillRect(0, -10, 40, 20);
       ctx.restore();
     };
@@ -32,7 +32,7 @@ function Canvas({ angle, velocity, isAnimating, setSimulationData }) {
       // Dibujar la pelota del proyectil
       ctx.beginPath();
       ctx.arc(x, y, 10, 0, 2 * Math.PI);
-      ctx.fillStyle = 'red';
+      ctx.fillStyle = 'red'; //color de la pelota
       ctx.fill();
       ctx.stroke();
     };
@@ -40,7 +40,7 @@ function Canvas({ angle, velocity, isAnimating, setSimulationData }) {
     const drawPath = (points) => {
       // Dibujar la línea parabólica conectando los puntos
       ctx.beginPath();
-      ctx.strokeStyle = 'blue';
+      ctx.strokeStyle = 'blue'; //Color de la linea
       ctx.lineWidth = 2;
       for (let i = 0; i < points.length - 1; i++) {
         ctx.moveTo(points[i].x, points[i].y);
