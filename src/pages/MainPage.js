@@ -13,6 +13,9 @@ function MainPage() {
         <Link to="/caida-libre" className="simulator-link">
           Simulador de Caída Libre
         </Link>
+        <Link to="/caida-libre" className="simulator-link">
+          Nuevos simuladores
+        </Link>
       </div>
     </div>
   );
